@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="" lang="en-IN">
+
+<head>
+    <title>Tutree Internship Task</title>
+    <link rel="stylesheet" media="screen" href="try.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="site-container">
+        <div class="site-pusher">
+            <header class="header">
+                <a class="hamburger" id="hamburger" href="#"><span class="fa fa-bars"></span></a>
+                <div class="full">
+                    <a class="header-logo" href="#"><img style="margin-top: 19px" class="logo-in" src="logo.svg" alt="Cb logo navy">
+                    </a>
+                    <nav class="menu relative full">
+                        <div class="header-welcome">Hello.</div>
+                        <a id="find-jobs-link" class="active" aria-current="page" href="#">Find Jobs</a>
+                        <a id="cv-upload-link" href="#">Create your profile</a>
+                        <a id="reco-link" href="#">Recommendations</a>
+                        <a id="resources-link" href="#">Resources</a>
+                        <div class="menu-links-right">
+                            <a id="signin-link" class="link-signin" href="#">Sign In</a>
+                            <ul class="sous-menu">
+                                <li class="sous-menu-links hovered">
+                                    <span>Employers<i class="fa fa-caret-down"></i></span>
+                                    <ul style="display: none;">
+                                        <li><a id="employers-sign-in" href="#">Employers Sign In</a></li>
+                                        <li><a id="employers" href="#">Employers</a></li>
+                                        <li><a id="employers_cv_search" href="#">Search Resumes</a></li>
+                                        <li><a id="employers_post_jobs" href="#">Post Jobs</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <div class="site-content">
+                <input name="segmentifyUserEmail" type="hidden" value="">
+                <div id="jobs">
+                    <div class="top-bloc with-button-filter">
+                        <div class="container clearfix">
+                            <h1>Jobs and vacancies</h1>
+                            <div class="fl-r" id="display-filter">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="container show-filter" id="filter">
+                            <div class="dn-i" id="country_code">IN</div>
+                            <form id="job-search-form" class="form" action="" method="get">
+                                <input name="utf8" type="hidden" value="✓">
+                                <div class="field with-fa">
+                                    <span class="fa fa-search"></span>
+                                    <input type="text" name="q" id="Keywords" placeholder="eg. Programmer" autocomplete="off">
+                                </div>
+                                <div class="field with-fa">
+                                    <span class="fa fa-location-arrow"></span>
+                                    <div class="easy-autocomplete" style="width: 365px;"><input type="text" name="loc" id="Location" placeholder="eg. Mumbai" autocomplete="off">
+                                        <div class="easy-autocomplete-container" id="eac-container-Location">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <input type="submit" value="Find Jobs" id="sbmt" class="btn btn-primary">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="full col-2 small-marge">
+                        <div class="col small bloc" id="fixed-parent">
+                            <a class="btn btn-blue btn-block btn-seperate" id="jobs-filter-button" href="#" style="display: none;">Show filters</a>
+                            <form class="form relative" id="jobs-filter" action="#" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+                                <div class="job-filter">
+                                    <div class="job-filter-title" id="a">Date Posted</div>
+                                    <div class="job-filter-content" id="aa">
+                                        <ul class="field">
+                                            <li>
+                                                <input type="radio" name="posted" id="posted_1" value="1">
+                                                <label for="posted_1">24 hours</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="posted" id="posted_3" value="3">
+                                                <label for="posted_3">3 days</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="posted" id="posted_7" value="7">
+                                                <label for="posted_7">7 days</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="posted" id="posted_30" value="30" checked="checked">
+                                                <label for="posted_30">30 days</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="job-filter">
+                                    <div class="job-filter-title" id="b">Job Type</div>
+                                    <div class="job-filter-content" id="bb" style="">
+                                        <ul class="field" id="check_emp">
+                                            <li>
+                                                <input type="checkbox" name="front_emp" id="emp_all" value="" checked="checked">
+                                                <label for="emp_all">All</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="front_emp" id="emp_jtft" value="jtft">
+                                                <label class="with-span" for="emp_jtft">Full-Time Employee<span>(35)</span></label>
+                                            </li>
+                                            <input type="hidden" name="emp" id="emp">
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <div class="job-filter" id="filter-categories">
+                                    <div class="job-filter-title" id="c">Categories</div>
+                                    <div class="job-filter-content" id="cc" style="">
+                                        <ul class="field">
+                                            <li>
+                                                <input type="checkbox" name="front_category" id="filter_category_information-technology" value="jn008">
+                                                <label class="with-span" for="filter_category_information-technology">Information Technology<span>(32)</span></label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="front_category" id="filter_category_other" value="jn010">
+                                                <label class="with-span" for="filter_category_other">Other<span>(3)</span></label>
+                                            </li>
+                                            <a class="link-blue dn jobs-filter-reset" id="filter-category" href="#">Reset location</a>
+                                            <input type="hidden" name="filter_category" id="filter_category">
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="job-filter" id="filter-states">
+                                    <div class="job-filter-title" id="d">States</div>
+                                    <div class="job-filter-content" id="dd" style="">
+                                        <ul class="field">
+                                            <li>
+                                                <input type="radio" name="filter_state" id="filter_state_karnataka" value="karnataka">
+                                                <label class="with-span" for="filter_state_karnataka">Karnataka<span>(17)</span></label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="filter_state" id="filter_state_kerala" value="kerala">
+                                                <label class="with-span" for="filter_state_kerala">Kerala<span>(13)</span></label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="filter_state" id="filter_state_tamil-nadu" value="tamil nadu">
+                                                <label class="with-span" for="filter_state_tamil-nadu">Tamil Nadu<span>(3)</span></label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="filter_state" id="filter_state_telangana" value="telangana">
+                                                <label class="with-span" for="filter_state_telangana">Telangana<span>(2)</span></label>
+                                            </li>
+                                            <li><a class="link-blue dn jobs-filter-reset" id="filter-state" href="#">Reset location</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="job-filter" id="filter-cities">
+                                    <div class="job-filter-title" id="e">City</div>
+                                    <div class="job-filter-content" id="ee" style="">
+                                        <ul class="field">
+                                            <li>
+                                                <input type="radio" name="filter_city" id="filter_city_bengaluru" value="bengaluru">
+                                                <label class="with-span" for="filter_city_bengaluru">Bengaluru<span>(17)</span></label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="filter_city" id="filter_city_thiruvananthapuram" value="thiruvananthapuram">
+                                                <label class="with-span" for="filter_city_thiruvananthapuram">Thiruvananthapuram<span>(11)</span></label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="filter_city" id="filter_city_chennai" value="chennai">
+                                                <label class="with-span" for="filter_city_chennai">Chennai<span>(3)</span></label>
+                                            </li>
+                                            <a class="link-blue dn jobs-filter-reset" id="filter-city" href="#">Reset location</a>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="job-filter col-2 field half-mobile">
+                                    <div class="filter-fixed fixed" style="top: 790px; width: 200px;">
+                                        <div class="col large"><input type="submit" value="Filter jobs" class="btn btn-primary btn-block" id="submit-jobs-filter"></div>
+                                        <div class="col show-mobile"><a class="btn btn-neutral btn-block btn-np" id="cancel-jobs-filter" href="#">Cancel</a></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col big bloc">
+                            <div id="sort-by">
+                                Sort By:
+                                <a rel="nofollow" class="active" aria-current="page" href="#">Relevance</a>
+                                <a rel="nofollow" href="#">Date</a>
+                            </div>
+                            <div id="jobs-content">
+                                <div class="col-2 small small-marge">
+                                    <div class="col">
+                                        <div class="job">
+                                            <div class="job-info">
+                                                <a class="job-title" href="#">Software Developer</a>
+                                                <div class="date">
+                                                    <a href="#"><i class="fa fa-clock-o"></i>posted 3 days ago</a></div>
+                                                <div class="snapshot">
+                                                    <div class="snapshot-item">
+                                                        <i class="fa fa-building-o"></i>
+                                                        <a href="#">UST Global</a>
+                                                    </div>
+                                                    <a class="snapshot-item" href="#"><i class="fa fa-map-marker"></i>Bengaluru</a>
+                                                    <div class="snapshot-item">
+                                                        <i class="fa fa-suitcase"></i> Full-Time
+                                                    </div>
+                                                </div>
+                                                <a href="#">
+                                                    <p class="description">
+                                                        PHHJP00016340Description:\'?????? Performs coding; testing and all related documentation for a project?????? Performs detailed design and Implement...
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <div class="job-company-picture">
+                                                <a class="block clearfix" href="#"><img alt="UST Global" data-src="#" class="lazy intl-company-logo" src="#">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="job">
+                                            <div class="job-info">
+                                                <a class="job-title" href="#">Software Developer</a>
+                                                <div class="date">
+                                                    <a href="#"><i class="fa fa-clock-o"></i>posted 3 days ago</a></div>
+                                                <div class="snapshot">
+                                                    <div class="snapshot-item">
+                                                        <i class="fa fa-building-o"></i>
+                                                        <a href="#">UST Global</a>
+                                                    </div>
+                                                    <a class="snapshot-item" href="#"><i class="fa fa-map-marker"></i>Bengaluru</a>
+                                                    <div class="snapshot-item">
+                                                        <i class="fa fa-suitcase"></i> Full-Time
+                                                    </div>
+                                                </div>
+                                                <a href="#">
+                                                    <p class="description">
+                                                        PHHJP00016354Description:-Experience in managing applications/solutions on production environment-Good Knowledge on AWS technologies-Monitoring the...
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <div class="job-company-picture">
+                                                <a class="block clearfix" href="#"><img alt="UST Global" data-src="#" class="lazy intl-company-logo" src="#">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="job">
+                                            <div class="job-info">
+                                                <a class="job-title" href="#">Software Developer</a>
+                                                <div class="date">
+                                                    <a href="#"><i class="fa fa-clock-o"></i>posted 3 days ago</a></div>
+                                                <div class="snapshot">
+                                                    <div class="snapshot-item">
+                                                        <i class="fa fa-building-o"></i>
+                                                        <a href="#">UST Global</a>
+                                                    </div>
+                                                    <a class="snapshot-item" href="#"><i class="fa fa-map-marker"></i>Bengaluru</a>
+                                                    <div class="snapshot-item">
+                                                        <i class="fa fa-suitcase"></i> Full-Time
+                                                    </div>
+                                                </div>
+                                                <a href="#">
+                                                    <p class="description">
+                                                        PHHJP00016348Description:Responsibility &amp; Key Result Areas?????? Understanding and refining requirements for serviceability software tools?????...
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <div class="job-company-picture">
+                                                <a class="block clearfix" href="#"><img alt="UST Global" data-src="#" class="lazy intl-company-logo" src="#">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="job">
+                                            <div class="job-info">
+                                                <a class="job-title" href="#">Sr. Software Developer</a>
+                                                <div class="date">
+                                                    <a href="#"><i class="fa fa-clock-o"></i>posted 3 days ago</a></div>
+                                                <div class="snapshot">
+                                                    <div class="snapshot-item">
+                                                        <i class="fa fa-building-o"></i>
+                                                        <a href="#">UST Global</a>
+                                                    </div>
+                                                    <a class="snapshot-item" href="#"><i class="fa fa-map-marker"></i>Thiruvananthapuram</a>
+                                                    <div class="snapshot-item">
+                                                        <i class="fa fa-suitcase"></i> Full-Time
+                                                    </div>
+                                                </div>
+                                                <a href="#">
+                                                    <p class="description">
+                                                        Sr Developer Hands on experience in Tibco BWCE.Hands on experience in MongoDB Hands on experience in Rabbit MQ
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <div class="job-company-picture">
+                                                <a class="block clearfix" href="#"><img alt="UST Global" data-src="#" class="lazy intl-company-logo" src="#">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="seo-spot-content">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="feedback">
+                            <div class="feedback_div">
+                                <div class="line"></div>
+                                <button onclick="feedback()">Feedback</button>
+                            </div>
+                        </div>
+                        <div class="feedback_form" id="feedback">
+                            <div>
+                                <button class="cross" onclick="feedShow()">x</button>
+                            </div>
+                            <form action="#">
+                                <div>
+                                    <input class="name" placeholder="Name" type="text">
+                                </div>
+                                <div>
+                                    <input class="email" placeholder="Email" type="email">
+                                </div>
+                                <div>
+                                    <input class="msg" placeholder="Write your message" type="text">
+                                </div>
+                                <button class="sub_btn">Submit</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="top-footer">
+                    Need Help?
+                    <a class="b" href="#">Contact Us</a>
+                </div>
+                <div class="footer">
+                    <div class="container">
+                        <div class="col-5 half-mobile">
+                            <div class="col">
+                                <span class="footer-title">job seekers</span>
+                                <a class="browse-jobs-link" href="#">Browse All Jobs</a>
+                                <a class="browse-jobs-link" href="#">Search by Location</a>
+                                <a class="browse-jobs-link" href="#">Job Categories</a>
+                                <a class="browse-jobs-link" href="#">Jobs By Company</a>
+                                <a class="browse-jobs-link" href="#">Add your Resume</a>
+                            </div>
+                            <div class="col hide-mobile">
+                                <span class="footer-title">Employers</span>
+                                <a id="employers-site-link" href="#">Search Resumes</a>
+                                <a id="footer-post-link" href="#">Post Jobs</a>
+                                <a id="footer-search-cv-link" href="#">Blog for HR</a>
+                            </div>
+                            <div class="col legal">
+                                <span class="footer-title">legal</span>
+                                <a id="terms-link" href="#">Terms &amp; Conditions</a>
+                                <a id="privacy-link" href="#">Privacy Policy</a>
+                            </div>
+                            <div class="col hide-mobile">
+                                <span class="footer-title">careerbuilder</span>
+                                <a id="about-link" href="#">About Us</a>
+                                <br> Express Trade Towers 2<br>Unit No.3401, 4th Floor<br>Noida, UP 201 301<br>India
+                            </div>
+                            <div class="col social">
+                                <span class="footer-title">social</span>
+                                <a class="btn-tw" id="tw-link" href="#"></a>
+                                <a class="btn-fb" id="fb-link" href="#"></a>
+                                <a class="btn-ld" id="ld-link" href="#"></a>
+                            </div>
+                        </div>
+                        <span class="rights">© 2020 CareerBuilder, LLC. All rights reserved. Disclaimer: CareerBuilder India does not charge job seekers any fee or other consideration for using our services.</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    </div>
+    <script src="try.js"></script>
+
+</html>
